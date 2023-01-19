@@ -2,7 +2,10 @@ package Tuvi;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,8 +13,7 @@ import Initization.Init_1;
 
 public class SosanhDulieu extends Init_1 {
 
-	private static String ct1aText;
-	private static String ct1bText;
+	
 	private static String ct2aText;
 	private static String ct2bText;
 	private static String ct3aText;
@@ -188,8 +190,10 @@ public class SosanhDulieu extends Init_1 {
 		
 		List<String> all_ct1a = new ArrayList<>();
 		for (int i=0; i<chinhTinh1a.size(); i++) {
-			all_ct1a.add(chinhTinh1a.get(i).getText());
+			all_ct1a.add(chinhTinh1a.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct1a);
 		
 
 		WebElement tieuHan1a = driver.findElement(
@@ -248,14 +252,19 @@ public class SosanhDulieu extends Init_1 {
 		
 		List<String> all_ct1b = new ArrayList<>();
 		for (int i=0; i<chinhTinh1b.size(); i++) {
-			all_ct1b.add(chinhTinh1b.get(i).getText());
+			all_ct1b.add(chinhTinh1b.get(i).getText().toLowerCase());
+		}
+		 
+		Collections.sort(all_ct1b);
+		
+		String all_ct1a_string = all_ct1a.stream().collect(Collectors.joining(","));
+		String all_ct1b_string = all_ct1b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		if(all_ct1a_string.equals(all_ct1b_string)) {
+			System.out.println("Dữ liệu chính tinh đúng");
 		}
 		
-		if(all_ct1b.equals(all_ct1a)) {
-			System.out.println("đúng");
-		}else {
-			
-		}
+		
 		// toLowerCase() chuyển chữ hoa về chữ thường
 //		if (ct1bText.toLowerCase().contains(ct1aText.toLowerCase())) {
 //			System.out.println("Đúng dữ liệu chính tinh");
