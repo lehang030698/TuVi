@@ -12,52 +12,13 @@ import org.openqa.selenium.WebElement;
 import Initization.Init_1;
 
 public class SosanhDulieu extends Init_1 {
-
 	
-	private static String ct2aText;
-	private static String ct2bText;
-	private static String ct3aText;
-	private static String ct3bText;
-	private static String ct4aText;
-	private static String ct4bText;
-	private static String ct5aText;
-	private static String ct5bText;
-	private static String ct6aText;
-	private static String ct6bText;
-	private static String ct7aText;
-	private static String ct7bText;
-	private static String ct8aText;
-	private static String ct8bText;
-	private static String ct9aText;
-	private static String ct9bText;
-	private static String ct10aText;
-	private static String ct10bText;
-	private static String ct11aText;
-	private static String ct11bText;
-	private static String ct12aText;
-	private static String ct12bText;
-
-	// public static String amDuongText;
 
 	public static void main(String[] args) {
 		Setup();
-		Dulieutrungtam();
-		dulieucung1();
-//		dulieucung2();
-//		dulieucung3();
-//		dulieucung4();
-//		dulieucung5();
-//		dulieucung6();
-//		dulieucung7();
-//		dulieucung8();
-//		dulieucung9();
-//		dulieucung10();
-//		dulieucung11();
-//		dulieucung12();
-	}
-	
-	public static void Dulieutrungtam() {
-		nhapDataXemVanMenh();	
+		
+		nhapDataXemVanMenh();
+		
 		WebElement ten = driver.findElement(By.xpath("//tr[@class='mb_color_hoten']/td[2]"));
 		if (ten.getText().equals(hoten)) {
 			System.out.println("Hiển thị đúng tên so với lúc tên nhập");
@@ -168,7 +129,21 @@ public class SosanhDulieu extends Init_1 {
 		} else {
 			System.out.println("lấy k đúng");
 		}
+		
+		dulieucung1();
+		dulieucung2();
+		dulieucung3();
+		dulieucung4();
+		dulieucung5();
+		dulieucung6();
+		dulieucung7();
+		dulieucung8();
+		dulieucung9();
+		dulieucung10();
+		dulieucung11();
+		dulieucung12();
 	}
+	
 
 	public static void dulieucung1() {
 		nhapDataXemVanMenh();
@@ -315,12 +290,15 @@ public class SosanhDulieu extends Init_1 {
 				.findElement(By.xpath("//div[@class='cung cung_2']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan2aText = daiHan2a.getText();
 
-		List<WebElement> chinhTinh2a = driver
-				.findElements(By.xpath("//div[@class='cung cung_2']//div[@class='cung_content']//p"));
-		for (WebElement ct2a : chinhTinh2a) {
-			ct2aText = ct2a.getText();
+		List<WebElement> chinhTinh2a = driver.findElements(By.xpath("//div[@class='cung cung_2']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct2a = new ArrayList<>();
+		for(int i=0;i<chinhTinh2a.size();i++) {
+			all_ct2a.add(chinhTinh2a.get(i).getText().toLowerCase());
 		}
-
+		
+		Collections.sort(all_ct2a);
+		
 		WebElement tieuHan2a = driver.findElement(
 				By.xpath("//div[@class='cung cung_2']//div[@class='cung_content']//div[@class='tieu_han']"));
 		String tieuhan2aText = tieuHan2a.getText();
@@ -363,16 +341,21 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh2b = driver.findElements(By.xpath("//tbody/tr[4]/td[2]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct1b : chinhTinh2b) {
-			ct2bText = ct1b.getText();
+		
+		List<String> all_ct2b = new ArrayList<>();
+		for(int i=0; i<chinhTinh2b.size();i++) {
+			all_ct2b.add(chinhTinh2b.get(i).getText().toLowerCase());
 		}
-
-		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct2bText.toLowerCase().contains(ct2aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh ở cung số 2");
-		} else {
-			System.out.println("không đúng dữ liệu");
+		Collections.sort(all_ct2b);
+		
+		String all_ct2a_string = all_ct2a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct2b_string = all_ct2b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct2a_string.equals(all_ct2b_string)) {
+			System.out.println("Dữ liệu chính tinh đúng");
 		}
+		
 		WebElement tieuHan2b = driver.findElement(By.xpath("//tbody/tr[4]/td[2]/div/div[3]/div[1]"));
 		String tieuHan2bText = tieuHan2b.getText();
 
@@ -405,23 +388,23 @@ public class SosanhDulieu extends Init_1 {
 	public static void dulieucung3() {
 		nhapDataXemVanMenh();
 
-		WebElement cungso3a = driver.findElement(
-				By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//span[@class='c_cung']"));
+		WebElement cungso3a = driver.findElement(By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//span[@class='c_cung']"));
 		String cungso3aText = cungso3a.getText();
 
-		WebElement conGiap3a = driver
-				.findElement(By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//div[@class='c_giap']"));
+		WebElement conGiap3a = driver.findElement(By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//div[@class='c_giap']"));
 		String conGiap3aText = conGiap3a.getText();
 
-		WebElement daiHan3a = driver
-				.findElement(By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//div[@class='daihan']"));
+		WebElement daiHan3a = driver.findElement(By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan3aText = daiHan3a.getText();
 
-		List<WebElement> chinhTinh3a = driver
-				.findElements(By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//p"));
-		for (WebElement ct3a : chinhTinh3a) {
-			ct3aText = ct3a.getText();
+		List<WebElement> chinhTinh3a = driver.findElements(By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct3a = new ArrayList<>();
+		for(int i=0; i<chinhTinh3a.size();i++) {
+			all_ct3a.add(chinhTinh3a.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct3a);
 
 		WebElement tieuHan3a = driver.findElement(
 				By.xpath("//div[@class='cung cung_3']//div[@class='cung_content']//div[@class='tieu_han']"));
@@ -465,16 +448,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh3b = driver.findElements(By.xpath("//tbody/tr[4]/td[1]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct3b : chinhTinh3b) {
-			ct3bText = ct3b.getText();
+		
+		List<String> all_ct3b = new ArrayList<>();
+		for(int i=0;i<chinhTinh3b.size();i++) {
+			all_ct3b.add(chinhTinh3b.get(i).getText().toLowerCase());
+		}
+		
+		Collections.sort(all_ct3b);
+		
+		String all_ct3a_string = all_ct3a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct3b_string = all_ct3b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct3a_string.equals(all_ct3b_string)) {
+			System.out.println("Dữ liệu chính tinh đúng");
 		}
 
-		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct3bText.toLowerCase().contains(ct3aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh ở cung số 3");
-		} else {
-			System.out.println("không đúng dữ liệu");
-		}
+		
 		WebElement tieuHan3b = driver.findElement(By.xpath("//tbody/tr[4]/td[1]/div/div[3]/div[1]"));
 		String tieuHan3bText = tieuHan3b.getText();
 
@@ -519,11 +509,13 @@ public class SosanhDulieu extends Init_1 {
 				.findElement(By.xpath("//div[@class='cung cung_4']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan4aText = daiHan4a.getText();
 
-		List<WebElement> chinhTinh4a = driver
-				.findElements(By.xpath("//div[@class='cung cung_4']//div[@class='cung_content']//p"));
-		for (WebElement ct4a : chinhTinh4a) {
-			ct4aText = ct4a.getText();
+		List<WebElement> chinhTinh4a = driver.findElements(By.xpath("//div[@class='cung cung_4']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct4a = new ArrayList<>();
+		for(int i=0; i<chinhTinh4a.size();i++) {
+			all_ct4a.add(chinhTinh4a.get(i).getText().toLowerCase());
 		}
+		Collections.sort(all_ct4a);
 
 		WebElement tieuHan4a = driver.findElement(
 				By.xpath("//div[@class='cung cung_4']//div[@class='cung_content']//div[@class='tieu_han']"));
@@ -567,17 +559,22 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh4b = driver.findElements(By.xpath("//tbody/tr[3]/td[1]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct4b : chinhTinh4b) {
-			ct4bText = ct4b.getText();
-		}
-
+		List<String> all_ct4b= new ArrayList<>();
+		
 		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct4bText.toLowerCase().contains(ct4aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh ở cung số 4");
-		} else {
-			System.out.println("không đúng dữ liệu");
+		for(int i=0;i<chinhTinh4b.size();i++) {
+			all_ct4b.add(chinhTinh4b.get(i).getText().toLowerCase());
 		}
-
+		
+		Collections.sort(all_ct4b);
+		String all_ct4a_string = all_ct4a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct4b_string = all_ct4b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct4a_string.equals(all_ct4b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 4 đúng");
+		}
+			
 		WebElement tieuHan4b = driver.findElement(By.xpath("//tbody/tr[3]/td[1]/div/div[3]/div[1]"));
 		String tieuHan4bText = tieuHan4b.getText();
 
@@ -622,12 +619,17 @@ public class SosanhDulieu extends Init_1 {
 				.findElement(By.xpath("//div[@class='cung cung_5']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan5aText = daiHan5a.getText();
 
-		List<WebElement> chinhTinh5a = driver
-				.findElements(By.xpath("//div[@class='cung cung_5']//div[@class='cung_content']//p"));
-		for (WebElement ct5a : chinhTinh5a) {
-			ct5aText = ct5a.getText();
+		List<WebElement> chinhTinh5a = driver.findElements(By.xpath("//div[@class='cung cung_5']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct5a= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh5a.size();i++) {
+			all_ct5a.add(chinhTinh5a.get(i).getText().toLowerCase());
 		}
-
+		
+		Collections.sort(all_ct5a);
+		
 		WebElement tieuHan5a = driver.findElement(
 				By.xpath("//div[@class='cung cung_5']//div[@class='cung_content']//div[@class='tieu_han']"));
 		String tieuhan5aText = tieuHan5a.getText();
@@ -670,16 +672,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh5b = driver.findElements(By.xpath("//tbody/tr[2]/td[1]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct5b : chinhTinh5b) {
-			ct5bText = ct5b.getText();
-		}
-
+		
+		List<String> all_ct5b= new ArrayList<>();
+		
 		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct5bText.toLowerCase().contains(ct5aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh ở cung số 5");
-		} else {
-			System.out.println("không đúng dữ liệu");
+		for(int i=0;i<chinhTinh5b.size();i++) {
+			all_ct5b.add(chinhTinh5b.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct5b);
+		String all_ct5a_string = all_ct5a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct5b_string = all_ct5b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct5a_string.equals(all_ct5b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 5 đúng");
+		}
+		
 		WebElement tieuHan5b = driver.findElement(By.xpath("//tbody/tr[2]/td[1]/div/div[3]/div[1]"));
 		String tieuHan5bText = tieuHan5b.getText();
 
@@ -724,11 +733,17 @@ public class SosanhDulieu extends Init_1 {
 				.findElement(By.xpath("//div[@class='cung cung_6']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan6aText = daiHan6a.getText();
 
-		List<WebElement> chinhTinh6a = driver
-				.findElements(By.xpath("//div[@class='cung cung_6']//div[@class='cung_content']//p"));
-		for (WebElement ct6a : chinhTinh6a) {
-			 ct6aText = ct6a.getText();
+		List<WebElement> chinhTinh6a = driver.findElements(By.xpath("//div[@class='cung cung_6']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct6a= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh6a.size();i++) {
+			all_ct6a.add(chinhTinh6a.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct6a);
+		
 
 		WebElement tieuHan6a = driver.findElement(
 				By.xpath("//div[@class='cung cung_6']//div[@class='cung_content']//div[@class='tieu_han']"));
@@ -772,17 +787,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh6b = driver.findElements(By.xpath("//tbody/tr[1]/td[1]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct6b : chinhTinh6b) {
-			ct6bText = ct6b.getText();
-			
+		
+		List<String> all_ct6b= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh6b.size();i++) {
+			all_ct6b.add(chinhTinh6b.get(i).getText().toLowerCase());
+		}
+		
+		Collections.sort(all_ct6b);
+		String all_ct6a_string = all_ct6a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct6b_string = all_ct6b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct6a_string.equals(all_ct6b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 4 đúng");
 		}
 
-		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct6bText.toLowerCase().contains(ct6aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh ở cung số 6");
-		} else {
-			System.out.println("Không đúng dữ liệu chính tinh tại cung số 6");
-		}
 		WebElement tieuHan6b = driver.findElement(By.xpath("//tbody/tr[1]/td[1]/div/div[3]/div[1]"));
 		String tieuHan6bText = tieuHan6b.getText();
 
@@ -827,11 +848,16 @@ public class SosanhDulieu extends Init_1 {
 				.findElement(By.xpath("//div[@class='cung cung_7']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan7aText = daiHan7a.getText();
 
-		List<WebElement> chinhTinh7a = driver
-				.findElements(By.xpath("//div[@class='cung cung_7']//div[@class='cung_content']//p"));
-		for (WebElement ct7a : chinhTinh7a) {
-			ct7aText = ct7a.getText();
+		List<WebElement> chinhTinh7a = driver.findElements(By.xpath("//div[@class='cung cung_7']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct7a= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh7a.size();i++) {
+			all_ct7a.add(chinhTinh7a.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct7a);
 
 		WebElement tieuHan7a = driver.findElement(
 				By.xpath("//div[@class='cung cung_7']//div[@class='cung_content']//div[@class='tieu_han']"));
@@ -875,17 +901,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh7b = driver.findElements(By.xpath("//tbody/tr[1]/td[2]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct7b : chinhTinh7b) {
-			ct7bText = ct7b.getText();
-			
-		}
- 
+		
+		List<String> all_ct7b= new ArrayList<>();
+		
 		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct7bText.toLowerCase().contains(ct7aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh tại cung số 7");
-		} else {
-			System.out.println("Không đúng dữ liệu chính tinh tại cung số 7");
+		for(int i=0;i<chinhTinh7b.size();i++) {
+			all_ct7b.add(chinhTinh7b.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct7b);
+		String all_ct7a_string = all_ct7a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct7b_string = all_ct7b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct7a_string.equals(all_ct7b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 7 đúng");
+		}
+		
 		WebElement tieuHan7b = driver.findElement(By.xpath("//tbody/tr[1]/td[2]/div/div[3]/div[1]"));
 		String tieuHan7bText = tieuHan7b.getText();
 
@@ -930,11 +962,16 @@ public class SosanhDulieu extends Init_1 {
 				.findElement(By.xpath("//div[@class='cung cung_8']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan8aText = daiHan8a.getText();
 
-		List<WebElement> chinhTinh8a = driver
-				.findElements(By.xpath("//div[@class='cung cung_8']//div[@class='cung_content']//p"));
-		for (WebElement ct8a : chinhTinh8a) {
-			ct8aText = ct8a.getText();
+		List<WebElement> chinhTinh8a = driver.findElements(By.xpath("//div[@class='cung cung_8']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct8a= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh8a.size();i++) {
+			all_ct8a.add(chinhTinh8a.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct8a);
 
 		WebElement tieuHan8a = driver.findElement(
 				By.xpath("//div[@class='cung cung_8']//div[@class='cung_content']//div[@class='tieu_han']"));
@@ -978,16 +1015,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh8b = driver.findElements(By.xpath("//tbody/tr[1]/td[3]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct8b : chinhTinh8b) {
-			ct8bText = ct8b.getText();
-		}
-
+		
+		List<String> all_ct8b= new ArrayList<>();
+		
 		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct8bText.toLowerCase().contains(ct8aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh ở cung số 8");
-		} else {
-			System.out.println("không đúng dữ liệu chính tinh tại cung số 8");
+		for(int i=0;i<chinhTinh8b.size();i++) {
+			all_ct8b.add(chinhTinh8b.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct8b);
+		String all_ct8a_string = all_ct8a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct8b_string = all_ct8b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct8a_string.equals(all_ct8b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 8 đúng");
+		}
+		
 		WebElement tieuHan8b = driver.findElement(By.xpath("//tbody/tr[1]/td[3]/div/div[3]/div[1]"));
 		String tieuHan8bText = tieuHan8b.getText();
 
@@ -1032,12 +1076,17 @@ public class SosanhDulieu extends Init_1 {
 				.findElement(By.xpath("//div[@class='cung cung_9']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan9aText = daiHan9a.getText();
 
-		List<WebElement> chinhTinh9a = driver
-				.findElements(By.xpath("//div[@class='cung cung_9']//div[@class='cung_content']//p"));
-		for (WebElement ct9a : chinhTinh9a) {
-			ct9aText = ct9a.getText();
+		List<WebElement> chinhTinh9a = driver.findElements(By.xpath("//div[@class='cung cung_9']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct9a= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh9a.size();i++) {
+			all_ct9a.add(chinhTinh9a.get(i).getText().toLowerCase());
 		}
-
+		
+		Collections.sort(all_ct9a);//sắp xếp dữ liệu trong danh sách mảng
+		
 		WebElement tieuHan9a = driver.findElement(
 				By.xpath("//div[@class='cung cung_9']//div[@class='cung_content']//div[@class='tieu_han']"));
 		String tieuhan9aText = tieuHan9a.getText();
@@ -1080,16 +1129,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh9b = driver.findElements(By.xpath("//tbody/tr[1]/td[4]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct9b : chinhTinh9b) {
-			ct9bText = ct9b.getText();
+
+		List<String> all_ct9b= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh9b.size();i++) {
+			all_ct9b.add(chinhTinh9b.get(i).getText().toLowerCase());
+		}
+		
+		Collections.sort(all_ct9b);
+		String all_ct9a_string = all_ct9a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct9b_string = all_ct9b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct9a_string.equals(all_ct9b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 9 đúng");
 		}
 
-		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct9bText.toLowerCase().contains(ct9aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh tại cung số 9");
-		} else {
-			System.out.println("Không đúng dữ liệu chính tinh tại cung số 9");
-		}
 		WebElement tieuHan9b = driver.findElement(By.xpath("//tbody/tr[1]/td[4]/div/div[3]/div[1]"));
 		String tieuHan9bText = tieuHan9b.getText();
 
@@ -1134,11 +1190,16 @@ public class SosanhDulieu extends Init_1 {
 				By.xpath("//div[@class='cung cung_10']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan10aText = daiHan10a.getText();
 
-		List<WebElement> chinhTinh10a = driver
-				.findElements(By.xpath("//div[@class='cung cung_10']//div[@class='cung_content']//p"));
-		for (WebElement ct10a : chinhTinh10a) {
-			ct10aText = ct10a.getText();
+		List<WebElement> chinhTinh10a = driver.findElements(By.xpath("//div[@class='cung cung_10']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct10a= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh10a.size();i++) {
+			all_ct10a.add(chinhTinh10a.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct10a);
 
 		WebElement tieuHan10a = driver.findElement(
 				By.xpath("//div[@class='cung cung_10']//div[@class='cung_content']//div[@class='tieu_han']"));
@@ -1182,16 +1243,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh10b = driver.findElements(By.xpath("//tbody/tr[2]/td[3]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct10b : chinhTinh10b) {
-			ct10bText = ct10b.getText();
-		}
-
+		
+		List<String> all_ct10b= new ArrayList<>();
+		
 		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct10bText.toLowerCase().contains(ct10aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh ở cung số 10");
-		} else {
-			System.out.println("Chính tinh không đúng tại cung số 10");
+		for(int i=0;i<chinhTinh10b.size();i++) {
+			all_ct10b.add(chinhTinh10b.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct10b);
+		String all_ct10a_string = all_ct10a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct10b_string = all_ct10b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct10a_string.equals(all_ct10b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 10 đúng");
+		}
+		
 		WebElement tieuHan10b = driver.findElement(By.xpath("//tbody/tr[2]/td[3]/div/div[3]/div[1]"));
 		String tieuHan10bText = tieuHan10b.getText();
 
@@ -1236,11 +1304,16 @@ public class SosanhDulieu extends Init_1 {
 				By.xpath("//div[@class='cung cung_11']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan11aText = daiHan11a.getText();
 
-		List<WebElement> chinhTinh11a = driver
-				.findElements(By.xpath("//div[@class='cung cung_11']//div[@class='cung_content']//p"));
-		for (WebElement ct11a : chinhTinh11a) {
-			ct11aText = ct11a.getText();
+		List<WebElement> chinhTinh11a = driver.findElements(By.xpath("//div[@class='cung cung_11']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct11a= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh11a.size();i++) {
+			all_ct11a.add(chinhTinh11a.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct11a);
 
 		WebElement tieuHan11a = driver.findElement(
 				By.xpath("//div[@class='cung cung_11']//div[@class='cung_content']//div[@class='tieu_han']"));
@@ -1284,16 +1357,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh11b = driver.findElements(By.xpath("//tbody/tr[3]/td[2]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct11b : chinhTinh11b) {
-			ct11bText = ct11b.getText();
-		}
-
+		
+		List<String> all_ct11b= new ArrayList<>();
+		
 		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct11bText.toLowerCase().contains(ct11aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh tại cung số 11");
-		} else {
-			System.out.println("không đúng dữ liệu chính tính tại cung số 11");
+		for(int i=0;i<chinhTinh11b.size();i++) {
+			all_ct11b.add(chinhTinh11b.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct11b);
+		String all_ct11a_string = all_ct11a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct11b_string = all_ct11b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct11a_string.equals(all_ct11b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 4 đúng");
+		}
+		
 		WebElement tieuHan11b = driver.findElement(By.xpath("//tbody/tr[3]/td[2]/div/div[3]/div[1]"));
 		String tieuHan11bText = tieuHan11b.getText();
 
@@ -1338,11 +1418,16 @@ public class SosanhDulieu extends Init_1 {
 				By.xpath("//div[@class='cung cung_12']//div[@class='cung_content']//div[@class='daihan']"));
 		String daiHan12aText = daiHan12a.getText();
 
-		List<WebElement> chinhTinh12a = driver
-				.findElements(By.xpath("//div[@class='cung cung_12']//div[@class='cung_content']//p"));
-		for (WebElement ct12a : chinhTinh12a) {
-			ct12aText = ct12a.getText();
+		List<WebElement> chinhTinh12a = driver.findElements(By.xpath("//div[@class='cung cung_12']//div[@class='cung_content']//p"));
+		
+		List<String> all_ct12a= new ArrayList<>();
+		
+		// toLowerCase() chuyển chữ hoa về chữ thường
+		for(int i=0;i<chinhTinh12a.size();i++) {
+			all_ct12a.add(chinhTinh12a.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct12a);
 
 		WebElement tieuHan12a = driver.findElement(
 				By.xpath("//div[@class='cung cung_12']//div[@class='cung_content']//div[@class='tieu_han']"));
@@ -1387,16 +1472,23 @@ public class SosanhDulieu extends Init_1 {
 		}
 
 		List<WebElement> chinhTinh12b = driver.findElements(By.xpath("//tbody/tr[4]/td[4]/div/div[1]/div/div[2]/p"));
-		for (WebElement ct12b : chinhTinh12b) {
-			ct12bText = ct12b.getText();
-		}
-
+		
+		List<String> all_ct12b= new ArrayList<>();
+		
 		// toLowerCase() chuyển chữ hoa về chữ thường
-		if (ct12bText.toLowerCase().contains(ct12aText.toLowerCase())) {
-			System.out.println("Đúng dữ liệu chính tinh tại cung số 12");
-		} else {
-			System.out.println("Phần chính tinh không đúng tại cung số 12");
+		for(int i=0;i<chinhTinh12b.size();i++) {
+			all_ct12b.add(chinhTinh12b.get(i).getText().toLowerCase());
 		}
+		
+		Collections.sort(all_ct12b);
+		String all_ct12a_string = all_ct12a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
+		String all_ct12b_string = all_ct12b.stream().collect(Collectors.joining(","));
+		System.out.println("============================================");
+		
+		if(all_ct12a_string.equals(all_ct12b_string)) {
+			System.out.println("Dữ liệu chính tinh cung số 4 đúng");
+		}
+		
 		WebElement tieuHan12b = driver.findElement(By.xpath("//tbody/tr[4]/td[4]/div/div[3]/div[1]"));
 		String tieuHan12bText = tieuHan12b.getText();
 
