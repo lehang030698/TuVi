@@ -1,19 +1,14 @@
 package Tuvi;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import Initization.Init_1;
 
-public class SosanhDulieu extends Init_1 {
-	
-
+public class SosanhDulieu extends Init_1 {	
 	public static void main(String[] args) {
 		Setup();
 		
@@ -130,18 +125,31 @@ public class SosanhDulieu extends Init_1 {
 			System.out.println("lấy k đúng");
 		}
 		
-		dulieucung1();
-		dulieucung2();
-		dulieucung3();
-		dulieucung4();
+		System.out.println("================= Cung số 1 ===========================");
+		
+//		dulieucung1();
+//		System.out.println("================= Cung số 2 ===========================");	
+//		dulieucung2();
+//		System.out.println("================= Cung số 3 ===========================");
+//		dulieucung3();
+//		System.out.println("================= Cung số 4 ===========================");
+//		dulieucung4();
+		System.out.println("================= Cung số 5 ===========================");
 		dulieucung5();
-		dulieucung6();
-		dulieucung7();
-		dulieucung8();
-		dulieucung9();
-		dulieucung10();
-		dulieucung11();
-		dulieucung12();
+//		System.out.println("================= Cung số 6 ===========================");
+//		dulieucung6();
+//		System.out.println("================= Cung số 7 ===========================");
+//		dulieucung7();
+//		System.out.println("================= Cung số 8 ===========================");
+//		dulieucung8();
+//		System.out.println("================= Cung số 9 ===========================");
+//		dulieucung9();
+//		System.out.println("================= Cung số 10 ===========================");
+//		dulieucung10();
+//		System.out.println("================= Cung số 11 ===========================");
+//		dulieucung11();
+//		System.out.println("================= Cung số 12 ===========================");
+//		dulieucung12();
 	}
 	
 
@@ -152,8 +160,7 @@ public class SosanhDulieu extends Init_1 {
 				By.xpath("//div[@class='cung cung_1']//div[@class='cung_content']//span[@class='c_cung']"));
 		String cungso1aText = cungso1a.getText();
 
-		WebElement conGiap1a = driver
-				.findElement(By.xpath("//div[@class='cung cung_1']//div[@class='cung_content']//div[@class='c_giap']"));
+		WebElement conGiap1a = driver.findElement(By.xpath("//div[@class='cung cung_1']//div[@class='cung_content']//div[@class='c_giap']"));
 		String conGiap1aText = conGiap1a.getText();
 
 		WebElement daiHan1a = driver
@@ -168,11 +175,11 @@ public class SosanhDulieu extends Init_1 {
 			all_ct1a.add(chinhTinh1a.get(i).getText().toLowerCase());
 		}
 		
-		Collections.sort(all_ct1a);
+		
+		Collections.sort(all_ct1a); // hàm sắp xếp
 		
 
-		WebElement tieuHan1a = driver.findElement(
-				By.xpath("//div[@class='cung cung_1']//div[@class='cung_content']//div[@class='tieu_han']"));
+		WebElement tieuHan1a = driver.findElement(By.xpath("//div[@class='cung cung_1']//div[@class='cung_content']//div[@class='tieu_han']"));
 		String tieuhan1aText = tieuHan1a.getText();
 
 		WebElement trangSinh1a = driver.findElement(
@@ -181,19 +188,13 @@ public class SosanhDulieu extends Init_1 {
 
 		WebElement hanThang1a = driver.findElement(
 				By.xpath("//div[@class='cung cung_1']//div[@class='cung_content']//div[@class='han_thang']"));
-
 		String hanThang1aText = hanThang1a.getText();
 
 //		List <WebElement> saotot1 = driver.findElements(By.xpath("//div[@class='cung cung_1']//div[@class='cung_content']//ul[@class='sao_left']//li//span"));
 //		for (WebElement st1 : saotot1) {	
 //			System.out.println(st1.getText());
 //		}
-//		
-//		System.out.println("Danh sách sao xấu: ");
-//		List <WebElement> saoxau1 = driver.findElements(By.xpath("//div[@class='cung cung_1']//div[@class='cung_content']//ul[@class='sao_right ul_saoright']//li//span"));
-//		for (WebElement sx1 : saoxau1) {
-//				
-//		}
+
 
 //----------------------------------------//---------------------------//
 		nhapDataTuViChanCo();
@@ -234,7 +235,7 @@ public class SosanhDulieu extends Init_1 {
 		
 		String all_ct1a_string = all_ct1a.stream().collect(Collectors.joining(","));
 		String all_ct1b_string = all_ct1b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
+		
 		if(all_ct1a_string.equals(all_ct1b_string)) {
 			System.out.println("Dữ liệu chính tinh đúng");
 		}
@@ -350,7 +351,7 @@ public class SosanhDulieu extends Init_1 {
 		
 		String all_ct2a_string = all_ct2a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct2b_string = all_ct2b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
+		
 		
 		if(all_ct2a_string.equals(all_ct2b_string)) {
 			System.out.println("Dữ liệu chính tinh đúng");
@@ -458,13 +459,12 @@ public class SosanhDulieu extends Init_1 {
 		
 		String all_ct3a_string = all_ct3a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct3b_string = all_ct3b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
+		
 		
 		if(all_ct3a_string.equals(all_ct3b_string)) {
 			System.out.println("Dữ liệu chính tinh đúng");
 		}
 
-		
 		WebElement tieuHan3b = driver.findElement(By.xpath("//tbody/tr[4]/td[1]/div/div[3]/div[1]"));
 		String tieuHan3bText = tieuHan3b.getText();
 
@@ -569,7 +569,6 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct4b);
 		String all_ct4a_string = all_ct4a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct4b_string = all_ct4b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
 		
 		if(all_ct4a_string.equals(all_ct4b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 4 đúng");
@@ -610,7 +609,7 @@ public class SosanhDulieu extends Init_1 {
 		WebElement cungso5a = driver.findElement(
 				By.xpath("//div[@class='cung cung_5']//div[@class='cung_content']//span[@class='c_cung']"));
 		String cungso5aText = cungso5a.getText();
-
+		
 		WebElement conGiap5a = driver
 				.findElement(By.xpath("//div[@class='cung cung_5']//div[@class='cung_content']//div[@class='c_giap']"));
 		String conGiap5aText = conGiap5a.getText();
@@ -683,7 +682,6 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct5b);
 		String all_ct5a_string = all_ct5a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct5b_string = all_ct5b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
 		
 		if(all_ct5a_string.equals(all_ct5b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 5 đúng");
@@ -798,7 +796,6 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct6b);
 		String all_ct6a_string = all_ct6a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct6b_string = all_ct6b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
 		
 		if(all_ct6a_string.equals(all_ct6b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 4 đúng");
@@ -912,7 +909,6 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct7b);
 		String all_ct7a_string = all_ct7a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct7b_string = all_ct7b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
 		
 		if(all_ct7a_string.equals(all_ct7b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 7 đúng");
@@ -1026,7 +1022,7 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct8b);
 		String all_ct8a_string = all_ct8a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct8b_string = all_ct8b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
+		
 		
 		if(all_ct8a_string.equals(all_ct8b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 8 đúng");
@@ -1140,7 +1136,6 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct9b);
 		String all_ct9a_string = all_ct9a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct9b_string = all_ct9b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
 		
 		if(all_ct9a_string.equals(all_ct9b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 9 đúng");
@@ -1254,7 +1249,6 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct10b);
 		String all_ct10a_string = all_ct10a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct10b_string = all_ct10b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
 		
 		if(all_ct10a_string.equals(all_ct10b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 10 đúng");
@@ -1368,7 +1362,6 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct11b);
 		String all_ct11a_string = all_ct11a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct11b_string = all_ct11b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
 		
 		if(all_ct11a_string.equals(all_ct11b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 4 đúng");
@@ -1483,7 +1476,6 @@ public class SosanhDulieu extends Init_1 {
 		Collections.sort(all_ct12b);
 		String all_ct12a_string = all_ct12a.stream().collect(Collectors.joining(","));// nối mảng lại với nhau thành chuỗi
 		String all_ct12b_string = all_ct12b.stream().collect(Collectors.joining(","));
-		System.out.println("============================================");
 		
 		if(all_ct12a_string.equals(all_ct12b_string)) {
 			System.out.println("Dữ liệu chính tinh cung số 4 đúng");
@@ -1518,5 +1510,19 @@ public class SosanhDulieu extends Init_1 {
 
 	}
  
-	//
+//	int soLuongPhanTu1 =  all_cung1.size();
+//	int soLuongPhanTu2 =  all_cung2.size();
+//	for(int k = 0; k < soLuongPhanTu1;k++) {
+//		for(int h = 0; h < soLuongPhanTu2;k++) {
+//			if(k == h) {
+//				if (all_cung1.get(k).toLowerCase().contains(all_cung2.get(h).toLowerCase())) {	
+//			System.out.println(all_cung2.get(k).toLowerCase() +","+all_cung1.get(k).toLowerCase());		
+//			System.out.println("Đúng dữ liệu");
+//		} 
+//		else {	
+//			System.out.println("không đúng dữ liệu");
+//			}
+//			}
+//		}
+//	}
 }
